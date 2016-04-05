@@ -1,0 +1,42 @@
+package ie.gmit.sw.runner;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import ie.gmit.sw.maze.MazeView;
+import ie.gmit.sw.maze.Node;
+
+public class MazeRunner implements KeyListener{
+	
+	private static final int MAZE_DIMENSION = 70;
+	private Node[][] model;
+	private Node goal;
+	
+	private MazeView view;
+	private int currentRow;
+	private int currentCol;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,69 @@
+package ie.gmit.sw.runner;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+import ie.gmit.sw.maze.*;
+
+
+public class MazeRunner implements KeyListener{
+	
+	private static final int MAZE_DIMENSION = 70;
+	private Node[][] model;
+	private Node goal;
+	
+	private MazeView view;
+	private int currentRow;
+	private int currentCol;
+	
+	public MazeRunner() throws Exception{
+		Maze m = new Maze(MAZE_DIMENSION, MAZE_DIMENSION);
+		model = m.getMaze();
+    	view = new MazeView(model, goal);
+    	
+    	placePlayer();
+    	
+    	Dimension d = new Dimension(MazeView.DEFAULT_VIEW_SIZE, MazeView.DEFAULT_VIEW_SIZE);
+    	view.setPreferredSize(d);
+    	view.setMinimumSize(d);
+    	view.setMaximumSize(d);
+    	
+    	JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.addKeyListener(this);
+        f.getContentPane().setLayout(new FlowLayout());
+        f.add(view);
+        f.setSize(1000,1000);
+        f.setLocation(100,100);
+        f.pack();
+        f.setVisible(true);
+		
+		
+		
+	}//end MazeRunner
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
