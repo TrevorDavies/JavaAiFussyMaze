@@ -93,7 +93,7 @@ public class MazeRunner implements KeyListener{
 			return false;
 		}else if(model[r][c].getFeature() =='G'){
 			//model[r][c].setFeature('X');
-			System.out.println("Goal Node found at: "+model[r][c].isGoalNode()) ;
+			System.out.println("Goal Node found at: "+m.getGoalNode() );
 			return false;
 		}else{
 			return false; //Can't move

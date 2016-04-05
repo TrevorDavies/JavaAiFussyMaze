@@ -98,12 +98,7 @@ public class MazeView extends JPanel implements ActionListener{
         		if (zoomOut){
         			ch = maze[row][col].getFeature();
         			if (row == currentRow && col == currentCol){
-        				g2.setColor(Color.GREEN);
-        				g2.fillRect(x1, y1, size, size);
-        				continue;
-        			}
-        			if(ch == 'G'){
-        				g2.setColor(Color.BLUE);
+        				g2.setColor(Color.RED);
         				g2.fillRect(x1, y1, size, size);
         				continue;
         			}

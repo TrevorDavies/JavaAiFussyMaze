@@ -22,9 +22,7 @@ public class MazeView extends JPanel implements ActionListener{
 	private Timer timer;
 	private Node[][] maze;
 	private BufferedImage[] images;
-	
 	private int enemy_state = 5;
-	private int player_state = 7;
 	private int currentRow;
 	private int currentCol;
 	
@@ -98,12 +96,7 @@ public class MazeView extends JPanel implements ActionListener{
         		if (zoomOut){
         			ch = maze[row][col].getFeature();
         			if (row == currentRow && col == currentCol){
-        				g2.setColor(Color.GREEN);
-        				g2.fillRect(x1, y1, size, size);
-        				continue;
-        			}
-        			if(ch == 'G'){
-        				g2.setColor(Color.BLUE);
+        				g2.setColor(Color.RED);
         				g2.fillRect(x1, y1, size, size);
         				continue;
         			}
@@ -114,20 +107,16 @@ public class MazeView extends JPanel implements ActionListener{
         		
         		if (ch == 'X'){        			
         			imageIndex = 0;//wall
-        		}else if (ch == ' '){
-        			imageIndex = 1;
         		}else if (ch == 'W'){
-        			imageIndex = 2;
-        		}else if (ch == 'H'){
-        			imageIndex = 3;
-        		}else if (ch == 'B'){
-        			imageIndex = 4;
+        			imageIndex = 1;
         		}else if (ch == '?'){
-        			imageIndex = 5;
+        			imageIndex = 2;
+        		}else if (ch == 'B'){
+        			imageIndex = 3;
+        		}else if (ch == 'H'){
+        			imageIndex = 4;
         		}else if (ch == 'G'){
-        			imageIndex = 6;
-        		}else if (ch == 'P'){
-        			imageIndex = player_state;       			
+        			imageIndex = 7;
         		}else if (ch == 'E'){
         			imageIndex = enemy_state;       			
         		}else{
