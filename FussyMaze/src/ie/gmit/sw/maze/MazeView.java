@@ -15,7 +15,7 @@ public class MazeView extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	public static final int DEFAULT_VIEW_SIZE = 800;
 	
-	private static final int IMAGE_COUNT = 14;
+	private static final int IMAGE_COUNT = 13;
 	private int cellspan = 5;	
 	private int cellpadding = 2;
 	
@@ -107,6 +107,31 @@ public class MazeView extends JPanel implements ActionListener{
         				g2.fillRect(x1, y1, size, size);
         				continue;
         			}
+        			if(ch == 'X'){
+        				g2.setColor(Color.RED);
+        				g2.fillRect(x1, y1, size, size);
+        				continue;
+        			}
+        			if(ch == ' '){
+        				g2.setColor(Color.GRAY);
+        				g2.fillRect(x1, y1, size, size);
+        				continue;
+        			}
+        			if(ch == 'H'){
+        				g2.setColor(Color.PINK);
+        				g2.fillRect(x1, y1, size, size);
+        				continue;
+        			}
+        			if(ch == 'B'){
+        				g2.setColor(Color.ORANGE);
+        				g2.fillRect(x1, y1, size, size);
+        				continue;
+        			}
+        			if(ch == 'E'){
+        				g2.setColor(Color.BLACK);
+        				g2.fillRect(x1, y1, size, size);
+        				continue;
+        			}
         		}else{
         			ch = maze[currentRow - cellpadding + row][currentCol - cellpadding + col].getFeature();
         		}
@@ -115,17 +140,17 @@ public class MazeView extends JPanel implements ActionListener{
         		if (ch == 'X'){        			
         			imageIndex = 0;//wall
         		}else if (ch == ' '){
-        			imageIndex = 1;
+        			imageIndex = 1;//floor
         		}else if (ch == 'W'){
-        			imageIndex = 2;
+        			imageIndex = 2;//power
         		}else if (ch == 'H'){
-        			imageIndex = 3;
+        			imageIndex = 3;//health
         		}else if (ch == 'B'){
-        			imageIndex = 4;
+        			imageIndex = 4;//smash
         		}else if (ch == '?'){
-        			imageIndex = 5;
+        			imageIndex = 5;//helper
         		}else if (ch == 'G'){
-        			imageIndex = 6;
+        			imageIndex = 6;//goal node
         		}else if (ch == 'P'){
         			imageIndex = player_state;       			
         		}else if (ch == 'E'){
@@ -150,10 +175,19 @@ public class MazeView extends JPanel implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
-		if (enemy_state < 0 || enemy_state == 5){
-			enemy_state = 6;
+		if (player_state < 0 || player_state == 7){
+			player_state = 8;
+		}else if(player_state < 7 || player_state == 8){
+			player_state = 9;
 		}else{
-			enemy_state = 5;
+			player_state = 7;
+		}
+		if (enemy_state < 0 || enemy_state == 10){
+			enemy_state = 11;
+		}else if(enemy_state < 10 || enemy_state == 11){
+			enemy_state = 12;
+		}else{
+			enemy_state = 10;
 		}
 		this.repaint();
 	
@@ -167,11 +201,11 @@ public class MazeView extends JPanel implements ActionListener{
 		images[4] = ImageIO.read(new java.io.File("resources/hulkSmash_wall.png"));
 		images[5] = ImageIO.read(new java.io.File("resources/help_wall.png"));
 		images[6] = ImageIO.read(new java.io.File("resources/goal.png"));
-		images[8] = ImageIO.read(new java.io.File("resources/heroHulk1.png"));
-		images[9] = ImageIO.read(new java.io.File("resources/heroHulk2.png"));
-		images[10] = ImageIO.read(new java.io.File("resources/heroHulk3.png"));
-		images[11] = ImageIO.read(new java.io.File("resources/enemyVader1.png"));
-		images[12] = ImageIO.read(new java.io.File("resources/enemyVader2.png"));
-		images[13] = ImageIO.read(new java.io.File("resources/enemyVader3.png"));
+		images[7] = ImageIO.read(new java.io.File("resources/heroHulk1.png"));
+		images[8] = ImageIO.read(new java.io.File("resources/heroHulk2.png"));
+		images[9] = ImageIO.read(new java.io.File("resources/heroHulk3.png"));
+		images[10] = ImageIO.read(new java.io.File("resources/enemyVader1.png"));
+		images[11] = ImageIO.read(new java.io.File("resources/enemyVader2.png"));
+		images[12] = ImageIO.read(new java.io.File("resources/enemyVader3.png"));
 	}
 }

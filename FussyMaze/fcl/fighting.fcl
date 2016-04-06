@@ -1,0 +1,54 @@
+FUNCTION_BLOCK battle
+
+VAR_INPUT
+	health	: REAL;
+	smash	: REAL;
+	power	: REAL;	
+END_VAR
+
+VAR_OUTPUT
+	winner : REAL;	
+END_VAR
+	
+FUZZIFY health			
+	TERM poor := (0, 1) (30, 0); 
+	TERM good := (35, 0) (45,1) (60,1) (70,0);
+	TERM excellent := (70, 0) (90, 1);	
+END_FUZZIFY
+
+FUZZIFY power
+    TERM weak := (1, 1) (10, 0);
+    TERM strong	:= (14, 0) (20, 1);      
+END_FUZZIFY
+
+FUZZIFY smash
+	TERM poor   :=(0,10);
+	TERM deadly :=(100,1);	
+END_FUZZIFY
+
+DEFUZZIFY damage    
+    TERM low := (0, 1) (40, 0);
+    TERM normal := (30,0)(50,1)(70,0);
+    TERM high := (55, 0) (100, 1);
+    METHOD : COG;
+    DEFAULT := 0;       
+END_DEFUZZIFY
+    
+    RULEBLOCK No1
+         AND : MIN;
+         ACT : MIN;
+         ACCU : MAX;
+         RULE 1	: IF health is poor AND power IS weak THEN damage IS high;
+         RULE 2	: IF health is good AND power IS weak THEN damage IS high;
+         RULE 3	: IF health is excellent AND power IS weak THEN damage IS normal;       
+         RULE 4	: IF health is excellent AND power IS strong THEN damage IS low;        
+         RULE 5	: IF health is good AND power IS strong THEN damage IS low;       
+         RULE 6	: IF health is poor AND power IS strong THEN damage IS normal;
+         RULE 7: IF health is good AND power IS average THEN damage IS normal;    
+         RULE 8: IF smash is deadly THEN damage IS high;
+    END_RULEBLOCK
+
+END_FUNCTION_BLOCK
+
+
+	
