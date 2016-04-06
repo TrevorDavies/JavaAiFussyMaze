@@ -14,6 +14,7 @@ public class MazeRunner implements KeyListener{
 	private static final int MAZE_DIMENSION = 70;
 	private Node[][] model;
 	private Node goal;
+	private Maze ma;
 
 	private HulkFighter hulkFighter= new HulkFighter();
 	private boolean itsGameOver = false;
@@ -33,7 +34,7 @@ public class MazeRunner implements KeyListener{
 		//goal = m.getGoalNode();
     	view = new MazeView(model, goal);
     	
-    	hulk = new Player(100, 25, 100);
+    	hulk = new Player(100, 8, 100);
     	
     	placePlayer(hulk);
     	
@@ -126,15 +127,19 @@ public class MazeRunner implements KeyListener{
 			return false;
 		}else if(model[r][c].getFeature() =='G'){
 			//model[r][c].setFeature('X');
-			System.out.println("Goal Node found at: "+model[r][c].isGoalNode()) ;
+			System.out.println("Goal Node found at row: "+model[r][c].getRow()+" col: "+model[r][c].getCol()) ;
 			System.out.println("Game Over, You Win!!!");
 			itsGameOver = true;
-			return false;
+			model[r][c].setFeature(' ');
+
+
+			return true;
 		}else if(model[r][c].getFeature() =='E'){
-			fight();
+			fight();//not working 
 			if(itsGameOver){
 				model[r][c].setFeature('E');
-				return false;
+				return true;//should be false, but if set to false you can not move past enemy
+							//and may get stuck
 			}
 			else{
 				model[currentRow][currentCol].setFeature(' '); 

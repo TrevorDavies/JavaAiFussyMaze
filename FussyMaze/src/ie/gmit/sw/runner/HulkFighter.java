@@ -3,7 +3,7 @@ package ie.gmit.sw.runner;
 import net.sourceforge.jFuzzyLogic.*;
 import net.sourceforge.jFuzzyLogic.FunctionBlock;
 //import net.sourceforge.jFuzzyLogic.plot.JFuzzyChart;
-//import net.sourceforge.jFuzzyLogic.rule.Variable;
+import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class HulkFighter {
 	

@@ -17,12 +17,12 @@ FUZZIFY health
 END_FUZZIFY
 
 FUZZIFY power
-    TERM weak := (1, 1) (10, 0);
+    TERM weak := (1, 1) (1, 0);
     TERM strong	:= (14, 0) (20, 1);      
 END_FUZZIFY
 
 FUZZIFY smash
-	TERM poor   :=(0,10);
+	TERM poor   :=(0,1);
 	TERM deadly :=(100,1);	
 END_FUZZIFY
 
